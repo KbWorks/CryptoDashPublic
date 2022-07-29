@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <a href="javascript:window.history.go(-1)">Back</a> <!-- Displayed on top of a potentially large JSON response, so it will remain visible -->
+    <h1>Dashboard</h1>
+    
+   {% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Account</th>
+        <th>Symbol</th>
+        <th>Walletbalance</th>
+        <th>realisedPNL</th>
+        <th>cumrealisedpnl</th>
+       </tr>
+    </thead>
+    <tbody>
+      {% for user in result %}
+        <tr>
+          <td>{{ user._account }}</td>
+          <td>{{ user._Symbol }}</td>
+          <td>{{ user._walletbalance }}</td>
+          <td>{{ user._realisedpnl }}</td>
+          <td>{{ user._cumrealisedpnl }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h1>In trade</h1>
+  <table id="data2" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Account</th>
+        <th>Symbol</th>
+        <th>Entryprice</th>
+        <th>Leverage</th>
+        <th>Side</th>
+        <th>Size</th>
+        <th>unrealisedpnl</th>
+       </tr>
+    </thead>
+    <tbody>
+      {% for atr in actr %}
+        <tr>
+          <td>{{ atr._account }}</td>
+          <td>{{ atr._symbol }}</td>
+          <td>{{ atr._entryprice }}</td>
+          <td>{{ atr._leverage }}</td>
+          <td>{{ atr._side }}</td>
+          <td>{{ atr._size }}</td>
+          <td>{{ atr._unrealisedpnl }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %} <!-- Just a generic json viewer -->
+ 
+</body>
+</html>
